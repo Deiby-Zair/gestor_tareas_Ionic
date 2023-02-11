@@ -3,7 +3,7 @@
 ## Prerequisitos
 
 - Instalar node.js [incluido el gestor npm]
-- Instalar ionic ´npm i -g @ionic/cli´
+- Instalar ionic `npm i -g @ionic/cli`
 
 ## Configuración
 
