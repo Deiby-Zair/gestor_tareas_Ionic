@@ -1,0 +1,7 @@
+{
+  "name": "todofirebase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

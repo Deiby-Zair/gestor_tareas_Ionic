@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title id="titulo-App">Lista de Tareas</ion-title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div style="width: 18rem; padding: 1rem;">
+        <ion-input type="text" placeholder="Nueva tarea..." [(ngModel)]="task.title"></ion-input>
+        <div style="width: 18rem; padding: 0.7rem;">
+            <ion-label>
+                {{task.tipo}}
+            </ion-label>
+            <ion-button color={{task.tipo}} icon-left (click)="addItem()">
+                <ion-icon name="add"></ion-icon> Añadir tarea
+            </ion-button>
+        </div>
+
+
+        <ion-button size="small" color="primary" (click)="setColor('primary')"> </ion-button>
+        <ion-button size="small" color="secondary" (click)="setColor('secondary')"> </ion-button>
+        <ion-button size="small" color="tertiary" (click)="setColor('tertiary')"> </ion-button>
+        <ion-button size="small" color="success" (click)="setColor('success')"> </ion-button>
+        <ion-button size="small" color="warning" (click)="setColor('warning')"> </ion-button>
+        <ion-button size="small" color="danger" (click)="setColor('danger')"> </ion-button>
+        <ion-button size="small" color="light" (click)="setColor('light')"> </ion-button>
+        <ion-button size="small" color="medium" (click)="setColor('medium')"> </ion-button>
+        <ion-button size="small" color="dark" (click)="setColor('dark')"> </ion-button>
+    </div>
+
+    <ion-list>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 80%;">Tarea</th>
+                    <th style="width: 40%;">Estado </th>
+                </tr>
+            </thead>
+        </table>
+
+        <ion-item-sliding #slidingItem *ngFor="let task of tasks">
+
+            <ion-item [ngClass]="{taskDone: task.status === 'done'}">
+                <table class="table">
+                    <tr>
+                        <ion-button expand="full" color={{task.tipo}} class="boton_oculto" (click)="editarTarea(task)">
+                            <td style="width: 100%;"> {{task.title}}</td>
+                            <td style="width: 2rem"> {{task.status}}</td>
+                        </ion-button>
+                    </tr>
+                </table>
+
+            </ion-item>
+            <ion-item-options side="start" (ionSwipe)="removeTask(slidingItem, task)">
+                <button ion-button icon-only (click)="markAsDone(slidingItem, task)" color="secondary">
+            <ion-icon name="checkmark" class="icono_lateral"></ion-icon>
+          </button>
+                <button ion-button icon-only expandable (click)="removeTask(slidingItem, task)" color="danger">
+            <ion-icon name="trash" class="icono_lateral"></ion-icon>
+          </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+</ion-content>

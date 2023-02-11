@@ -1,0 +1,28 @@
+page-home {
+    .taskDone {
+        text-decoration: line-through;
+    }
+}
+
+#titulo-App {
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+toolbar-content {
+    display: inline-block;
+}
+
+.icono_lateral {
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+.boton_oculto {
+    text-align: left;
+    text-transform: lowercase;
+}
+
+.table {
+    padding: 1.4rem;
+}
